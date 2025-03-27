@@ -35,12 +35,12 @@ public class ProjectController {
     {
         return new ResponseEntity<>(projectService.findBySearch(search), HttpStatus.OK);
     }
-    @PostMapping()
+    @PostMapping("/change/create")
     public ResponseEntity<?> createProject(@RequestBody ProjectPojo projectPojo) 
     {
         return new ResponseEntity<>(projectService.createProject(projectPojo), HttpStatus.OK);
     }
-    @PutMapping("/{projectId}")
+    @PutMapping("/change/update/{projectId}")
     public ResponseEntity<?> updateProject(@PathVariable int projectId, @RequestBody ProjectPojo projectPojo)    
     {
         ProjectPojo res = projectService.updateProject(projectId, projectPojo);
@@ -50,7 +50,7 @@ public class ProjectController {
         }
         return new ResponseEntity<>("Задача или проект с таким id не найдено", HttpStatus.NOT_FOUND);
     }
-    @DeleteMapping("/{projectId}")
+    @DeleteMapping("/change/delete/{projectId}")
     public ResponseEntity<?> deleteProject(@PathVariable int projectId)    
     {
         if(projectService.deleteProject(projectId))
@@ -59,7 +59,7 @@ public class ProjectController {
         }
         return new ResponseEntity<>("Проект с таким id не найден", HttpStatus.NOT_FOUND);
     }
-    @GetMapping("/flag")
+    @GetMapping("/change/flag")
     public Map<Integer, Long> countProject()
     {
         return projectService.countProject();

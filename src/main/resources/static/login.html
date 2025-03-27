@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        .error-message {
+            color: red;
+            display: none; /* Скрыто по умолчанию */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-message" id="error">
+        Логин или пароль неверные
+    </div>
+    <style>
+        :target#error {
+            display: block;
+        }
+    </style>
+    <form action="/login" method="post">
+        Пользователь: <input type="text" name="username" id="username" />
+        <br />
+        Пароль: <input type="password" name="password" id="password" />
+        <br />
+        <input type="submit" value="Войти" />
+    </form>
+</body>
+
+</html>

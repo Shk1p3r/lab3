@@ -29,7 +29,7 @@ public class TaskController {
         }
         return new ResponseEntity<TaskPojo>(taskPojo, HttpStatus.OK);
     }
-    @PostMapping("/{projectId}/tasks")
+    @PostMapping("/{projectId}/change/tasks")
     public ResponseEntity<?> createTask(@PathVariable int projectId, @RequestBody TaskPojo taskPojo)
     {
         TaskPojo task = taskService.createTask(projectId, taskPojo);
@@ -39,7 +39,7 @@ public class TaskController {
         }
         return new ResponseEntity<>(task, HttpStatus.CREATED);
     }
-    @PutMapping("/{projectId}/tasks/{taskId}")
+    @PutMapping("/{projectId}/tasks/change/{taskId}")
     public ResponseEntity<?> updateTask(@PathVariable int projectId, @PathVariable int taskId, @RequestBody TaskPojo taskPojo)
     {
         TaskPojo res = taskService.updateTask(projectId, taskId, taskPojo);
@@ -49,7 +49,7 @@ public class TaskController {
         }
         return new ResponseEntity<>("Задача или проект с таким id не найдено", HttpStatus.NOT_FOUND);
     }
-    @DeleteMapping("/{projectId}/tasks/{taskId}")
+    @DeleteMapping("/{projectId}/tasks/change/{taskId}")
     public ResponseEntity<?> deleteTask(@PathVariable int projectId, @PathVariable int taskId)
     {
         if(taskService.deleteTask(projectId, taskId))
@@ -58,7 +58,7 @@ public class TaskController {
         }
         return new ResponseEntity<>("Задача или проект с таким id не найдено", HttpStatus.NOT_FOUND);
     }
-    @DeleteMapping("/{projectId}/deleteTasks")
+    @DeleteMapping("/{projectId}/change/deleteTasks")
     public ResponseEntity<?> deleteTaskByFlag(@PathVariable int projectId)
     {
         if(taskService.deleteTaskByFlag(projectId))
